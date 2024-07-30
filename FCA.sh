@@ -3,7 +3,6 @@
 cd /tmp/xtest
 ####################################################################################################
 ####################################################################################################
-echo "111"
 curl --max-time 5.5  --limit-rate 100K -k -A -k -s  https://cccam-premium.co/free-cccam/ > /tmp/xtest/CCcam
 grep -o -i 'C: free[^<]*' CCcam  > /etc/CCcam.cfg
 grep -o -i 'C: free[^<]*' CCcam > /tmp/xtest/soubor1
