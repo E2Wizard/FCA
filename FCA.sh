@@ -280,7 +280,8 @@ cat /etc/CCcam.cfg | grep -i "^C:.*" | while read line ; do
     group_number=$((group_number+1))
 done
 
-cat /etc/OscamDATAx.cfg >> /tmp/server 
+cat /etc/OscamDATAx.cfg >> /tmp/server
+sleep 0
 cp /tmp/server /etc/tuxbox/config/oscam/oscam.server  2>/dev/null || true
 sleep 0
 cp /tmp/server /etc/tuxbox/config/oscam-emu/oscam.server  2>/dev/null || true
