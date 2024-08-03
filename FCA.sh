@@ -228,7 +228,6 @@ more /tmp/xtest/soubor21
 ####################################################################################################
 ####################################################################################################
 
-cat /etc/OscamDATAx.cfg >> /tmp/soubor28
 cat soubor{1..28} > /tmp/CCcam.cfg 2>/dev/null || true
 sed -i "s/c:/C:/" /tmp/CCcam.cfg
 while read radek; do
@@ -281,7 +280,7 @@ cat /etc/CCcam.cfg | grep -i "^C:.*" | while read line ; do
     group_number=$((group_number+1))
 done
 
-
+cat /etc/OscamDATAx.cfg >> /tmp/server 
 cp /tmp/server /etc/tuxbox/config/oscam/oscam.server  2>/dev/null || true
 sleep 0
 cp /tmp/server /etc/tuxbox/config/oscam-emu/oscam.server  2>/dev/null || true
