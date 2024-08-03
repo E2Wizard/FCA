@@ -228,7 +228,7 @@ more /tmp/xtest/soubor21
 ####################################################################################################
 ####################################################################################################
 
-
+cat /etc/OscamDATAx.cfg >> /tmp/soubor28
 cat soubor{1..28} > /tmp/CCcam.cfg 2>/dev/null || true
 sed -i "s/c:/C:/" /tmp/CCcam.cfg
 while read radek; do
@@ -247,7 +247,6 @@ rm -rf /CCcam*
 rm -rf /hotovo*
 more /etc/CCcam.cfg
 cat /etc/CCcam.cfg > /tmp/CCcam.cfg
-cat /etc/OscamDATAx.cfg >> /tmp/server
 cat /etc/CCcamDATAx.cfg > /etc/CCcam.cfg
 echo "" >> /etc/CCcam.cfg
 grep -v '^ *$' /tmp/CCcam.cfg >> /etc/CCcam.cfg
