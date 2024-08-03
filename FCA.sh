@@ -247,6 +247,7 @@ rm -rf /CCcam*
 rm -rf /hotovo*
 more /etc/CCcam.cfg
 cat /etc/CCcam.cfg > /tmp/CCcam.cfg
+cat /etc/OscamDATAx.cfg >> /tmp/server
 cat /etc/CCcamDATAx.cfg > /etc/CCcam.cfg
 echo "" >> /etc/CCcam.cfg
 grep -v '^ *$' /tmp/CCcam.cfg >> /etc/CCcam.cfg
@@ -281,7 +282,6 @@ cat /etc/CCcam.cfg | grep -i "^C:.*" | while read line ; do
     group_number=$((group_number+1))
 done
 
-cat /etc/OscamDATAx.cfg >> /tmp/server
 
 cp /tmp/server /etc/tuxbox/config/oscam/oscam.server  2>/dev/null || true
 sleep 0
