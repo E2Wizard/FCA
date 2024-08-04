@@ -300,6 +300,8 @@ cp /tmp/server /etc/tuxbox/config/supcam-emu/oscam.server  2>/dev/null || true
 sleep 0
 cp /tmp/server /etc/tuxbox/config/oscamicam/oscam.server  2>/dev/null || true
 sleep 0
+cp /tmp/server /etc/tuxbox/config/oscamicamnew/oscam.server  2>/dev/null || true
+sleep 0
 
 wait
 
