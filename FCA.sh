@@ -250,10 +250,28 @@ grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor21
 
 more /tmp/xtest/soubor21
 ####################################################################################################
+curl  --limit-rate 50K  -Lbk -m 4555 -m 6555 -k  -s   https://blog.cccambtc.com/geni/ > /tmp/xtest/CCcam
+
+echo "C: "  > hotovo
+sed -ne 's#.*>Host:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
+echo -n " "  >> hotovo
+sed -ne 's#.*Port:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
+echo -n " "  >> hotovo
+sed -ne 's#.*User:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
+echo -n " "  >> hotovo
+sed -ne 's#.*Password:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
+sed -n 'H; $x; $s/\n//gp' hotovo > hotovo1
+echo ""  >> hotovo1
+cat hotovo1 > CCcam
+sed -i 's/  */ /g' CCcam
+grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor23
+
+more /tmp/xtest/soubor23
+####################################################################################################
 file_id="1Tumj9eRl8LIiS11PL-jRIqWGkforHDzA"
 curl --max-time 52 --limit-rate 100K -L -s "https://drive.google.com/uc?export=download&id=${file_id}" > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor22
-more /tmp/xtest/soubor22
+grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor24
+more /tmp/xtest/soubor24
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
