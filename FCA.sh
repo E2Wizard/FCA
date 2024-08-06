@@ -238,7 +238,7 @@ password=$(generate_random_letters 2>/dev/null)
 echo "Username: $username" >/dev/null 2>&1
 echo "Password: $password" >/dev/null 2>&1
 
-curl 'http://www.clinehub.com/freetest/' --compressed -X POST \
+curl -k -A -k -s 'http://www.clinehub.com/freetest/' --compressed -X POST \
   -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0' \
   -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8' \
   -H 'Accept-Language: cs,sk;q=0.8,en-US;q=0.5,en;q=0.3' \
@@ -249,10 +249,11 @@ curl 'http://www.clinehub.com/freetest/' --compressed -X POST \
   -H 'Referer: http://www.clinehub.com/freetest/' \
   -H 'Upgrade-Insecure-Requests: 1' \
   -H 'Priority: u=0, i' \
-  --data-raw '2freecccamKinhdUMARALI2=2freecccamKinhdUMARALI2&Username='"$username"$'&Password='"$password"$'&expiredate=+%7B+enddate%3D07-08-2024+00+%7D+Free+Test+1+Days++&expireshow=+Expire+Date+%3D%3D%3E+07+August+2024%2C+04%3A05%3A08+PM+&2freecccamKinhdUMARALI2=2freecccamKinhdUMARALI2' \
+  --data-raw '2freecccamKinhdUMARALI2=2freecccamKinhdUMARALI2&Username='"$username"$'&Password='"$password"$'' \
   > /tmp/xtest/CCcam
   
-grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /etc/CCcam.cfg > /tmp/xtest/soubor22
+grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor22
+
 more /tmp/xtest/soubor22
 ####################################################################################################
 ####################################################################################################
