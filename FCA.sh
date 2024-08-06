@@ -219,12 +219,6 @@ curl --max-time 5.5  --limit-rate 100K      -k -Lbk -A -k -m 8 -m 52 -s  https:/
 grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor20
 more /tmp/xtest/soubor20
 ####################################################################################################
-file_id="1Tumj9eRl8LIiS11PL-jRIqWGkforHDzA"
-curl --max-time 52 --limit-rate 100K -L -s "https://drive.google.com/uc?export=download&id=${file_id}" > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor21
-more /tmp/xtest/soubor21
-
-####################################################################################################
 generate_random_letters() {
     tr -dc 'a-z' < /dev/urandom | dd bs=3 count=1 2>/dev/null
 }
@@ -252,8 +246,13 @@ curl --max-time 5.5  -k -A -k -s 'http://www.clinehub.com/freetest/' --compresse
   --data-raw '2freecccamKinhdUMARALI2=2freecccamKinhdUMARALI2&Username='"$username"$'&Password='"$password"$'' \
   > /tmp/xtest/CCcam
   
-grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor22
+grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor21
 
+more /tmp/xtest/soubor21
+####################################################################################################
+file_id="1Tumj9eRl8LIiS11PL-jRIqWGkforHDzA"
+curl --max-time 52 --limit-rate 100K -L -s "https://drive.google.com/uc?export=download&id=${file_id}" > /tmp/xtest/CCcam
+grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor22
 more /tmp/xtest/soubor22
 ####################################################################################################
 ####################################################################################################
