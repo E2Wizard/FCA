@@ -302,6 +302,7 @@ sed -i "/^$/d " /etc/CCcam.cfg
 rm -rf /tmp/CCcam.cfg
 sleep 0
 OUTPUT2='/tmp/server'
+echo ""
 echo -n "Converting ....."
 FS=" "
 group_number=1
