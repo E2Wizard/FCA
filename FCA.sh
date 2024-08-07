@@ -294,6 +294,7 @@ rm -rf /CCcam*
 rm -rf /hotovo*
 more /etc/CCcam.cfg
 cat /etc/CCcam.cfg > /tmp/CCcam.cfg
+echo "processing -DATAx..."
 cat /etc/CCcamDATAx.cfg > /etc/CCcam.cfg
 echo "" >> /etc/CCcam.cfg
 grep -v '^ *$' /tmp/CCcam.cfg >> /etc/CCcam.cfg
