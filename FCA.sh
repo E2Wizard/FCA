@@ -23,30 +23,25 @@ more /tmp/xtest/soubor3
 curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52    http://dream4evertwo.info/index.php?pages/D4E/ > /tmp/xtest/CCcam
 
 
-sed -ne 's#.*HOST:\([^/-]*\).*#\1#p' CCcam > adresa
+sed -ne 's#.*HOST:\([^/]*\).*#\1#p' CCcam > adresa
 sed -ne 's#.*">\([^/]*\).*#\1#p' adresa > adresa1
 sed -i 's/<//' adresa1
+sed -i 's/-.*//' adresa1
 
+sed -ne 's#.*PORT:.*>\(.*\)</span></strong>.*#\1#p' CCcam > port
+cat port | tr -dc '0-9\n' > port1                       # take numbers only (from whole string)
 
-sed -n 's#.*PORT:.* - \([0-9/]*\) - .*#\1#p' CCcam > port
-
-
-grep -o -E '[0-9]+(/?[0-9]+)*' port | sed -E 's/[^0-9]//g' | grep -v '^0000$' | awk 'length($0) >= 4' > port1
-sed -i 's/>//' port1
-sed -i 's#/##g' port1
-sed -i 's/<//' port1
-sed -i 's/&nbsp;//' port1
-sed -i 's/[^0-9]*//g' port1
 sed -ne 's#.*USER:\([^/]*\).*#\1#p' CCcam > user
 sed -ne 's#.*">\([^/]*\).*#\1#p' user > user1
 sed -i 's/<//' user1
-sed -i 's/remove the star//' user1
-sed -i 's/-//' user1
-sed -i 's/*//' user1
-sed -i 's/*//' user1
+#sed -i 's/remove the star//' user1
+#sed -i 's/-//' user1
+#sed -i 's/*//' user1
+
 sed -ne 's#.*PASS:\([^/]*\).*#\1#p' CCcam > pass
 sed -ne 's#.*">\([^/]*\).*#\1#p' pass > pass1
 sed -i 's/<//' pass1
+
 echo "C: "  > hotovo
 sed -n '1,1p' adresa1 >> hotovo
 echo -n " "  >> hotovo
@@ -75,14 +70,9 @@ echo -n " "  >> hotovo
 sed -n '3,3p' pass1 >> hotovo
 sed -n 'H; $x; $s/\n//gp' hotovo > hotovo3
 
-
 cat hotovo1 hotovo2 hotovo3 > ok
-sed -i 's/remove//' ok
-sed -i 's/star//' ok
-sed -i 's/ \+/ /g' ok
-sed -i 's/*//g' ok
-sed -i 's/-//g' ok
-sed -i 's/  */ /g' ok
+sed -i 's/    / /' ok
+sed -i 's/*//' ok
 
 grep -o -i -E 'C: [a-z][^<]*' ok  >> /etc/CCcam.cfg
 grep -o -i -E 'C: [a-z][^<]*' ok  > /tmp/xtest/soubor4
@@ -270,10 +260,7 @@ grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor23
 
 more /tmp/xtest/soubor23
 ####################################################################################################
-file_id="1Tumj9eRl8LIiS11PL-jRIqWGkforHDzA"
-curl --max-time 52 --limit-rate 100K -L -s "https://drive.google.com/uc?export=download&id=${file_id}" > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor24
-more /tmp/xtest/soubor24
+
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
@@ -379,5 +366,4 @@ rm -rf /tmp/cccam1
 sleep 5
 
 exit -0
-
 
