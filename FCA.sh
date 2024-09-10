@@ -5,20 +5,7 @@ cd /tmp/xtest
 ####################################################################################################
 echo "Downloading:"
 ####################################################################################################
-curl --max-time 5.5  --limit-rate 100K -k -A -k -s  https://cccam-premium.co/free-cccam/ > /tmp/xtest/CCcam
-grep -o -i 'C: free[^<]*' CCcam  > /etc/CCcam.cfg
-grep -o -i 'C: free[^<]*' CCcam > /tmp/xtest/soubor1
-more /tmp/xtest/soubor1
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -k -A -k -s  https://oscamicam.com/free-oscam-cccam-server/ > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam  >> /etc/CCcam.cfg
-grep -o -i -E 'C: [a-z][^<]*' CCcam  > /tmp/xtest/soubor2
-more /tmp/xtest/soubor2
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -k -A -k -s  https://cccamia.com/free-cccam/ > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam  >> /etc/CCcam.cfg
-grep -o -i -E 'C: [a-z][^<]*' CCcam  > /tmp/xtest/soubor3
-more /tmp/xtest/soubor3
+
 ####################################################################################################
 curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52    http://dream4evertwo.info/index.php?pages/D4E/ > /tmp/xtest/CCcam
 
@@ -94,9 +81,7 @@ grep -o -i -E '.*Expire' CCcam | sed "s#Expire##g"  > /tmp/xtest/soubor6
 
 more /tmp/xtest/soubor6
 ####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52  https://cccamgalaxy.com/  > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '1p; q'  > /tmp/xtest/soubor7
-more /tmp/xtest/soubor7
+
 ####################################################################################################
 KINGHD="https://kinghd.info/cccamtest3d.php"
 curl --max-time 5.5 --speed-time 9 --speed-limit 10 --max-time 4 --connect-timeout 4  --limit-rate 50K  -Lbk -m 4555 -m 6555 -k  -s  "$KINGHD" > /tmp/xtest/a
@@ -161,55 +146,9 @@ grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor10
 
 more /tmp/xtest/soubor10
 ####################################################################################################
-curl --max-time 5.5  --limit-rate 100K  -k -Lbk -A -k -m 8000 -m 5200 -s  https://cccamsate.com/free > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor12
-more /tmp/xtest/soubor12
-####################################################################################################
-curl --max-time 5.5  --limit-rate 25K      -k -Lbk -A -k -m 8 -m 52 -s  https://cccamiptv.club/free-cccam/#page-content > /tmp/xtest/CCcam
-grep -o -i 'C: free[^<]*' CCcam  > /tmp/xtest/soubor14
-more /tmp/xtest/soubor14
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -k -A -k -s  server.satunivers.tv/download.php?file=cccm.cfg > /tmp/xtest/soubor15
-more /tmp/xtest/soubor15
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -k -A -k -s  https://bosscccam.co/Test.php > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor16
-more /tmp/xtest/soubor16
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52  -H "Accept-Charset: utf-8" -H "Content-Type: application/x-www-form-urlencoded" -d "dil=tr&posta=$(echo "$((1000 + RANDOM % 9999))$((RANDOM % 9999))")@gmail.com&submit=Senden Sie die Testline an meine E-Mail-Adresse" -X POST https://www.bszsat.com/test.php  > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam  > /tmp/xtest/soubor17
-more /tmp/xtest/soubor17
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K  -k -Lbk -A -k -m 8 -m 52 -s  https://cccamhub.com/cccamfree/ > /tmp/xtest/CCcam
-grep -o -i 'C: free[^<]*' CCcam  > /tmp/xtest/soubor18
-more /tmp/xtest/soubor18
-####################################################################################################
-curl --max-time 5.5 -Lbk -m 4555 -m 6555 -k -c -s /tmp/xtest/cookies.txt 'https://test.cremtv.com/' >>/dev/null 2>&1 </dev/null &
-
-curl --max-time 5.5 -k -Lbk -A -k -m 8 -m 52 -s 'https://test.cremtv.com/cccam-acount-details' --compressed \
--H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0' \
--H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' \
--H 'Accept-Language: cs,sk;q=0.8,en-US;q=0.5,en;q=0.3' \
--H 'Accept-Encoding: gzip, deflate, br, zstd' \
--H 'Connection: keep-alive' \
--H 'Referer: https://test.cremtv.com/get' \
--b /tmp/xtest/cookies.txt \
--H 'Upgrade-Insecure-Requests: 1' \
--H 'Sec-Fetch-Dest: document' \
--H 'Sec-Fetch-Mode: navigate' \
--H 'Sec-Fetch-Site: same-origin' \
--H 'Sec-Fetch-User: ?1' \
--H 'Priority: u=1' \
--H 'TE: trailers' \
-> /tmp/xtest/CCcam
-
-grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam | awk '{if ($3 ~ /^[0-9]+$/) print}' | sed 's/\(.*cremtv\.com\).*/\1/'  > /tmp/xtest/soubor19
-
-more /tmp/xtest/soubor19
-####################################################################################################
-curl --max-time 5.5  --limit-rate 100K      -k -Lbk -A -k -m 8 -m 52 -s  https://cccamx.com/getCode.php > /tmp/xtest/CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor20
-more /tmp/xtest/soubor20
+curl --max-time 52 --limit-rate 100K -L -s "https://drive.usercontent.google.com/u/0/uc?id=1_8qWPKM6pc4q9Q1YUEN0fiqur9XvoZpR&export=download" > /tmp/xtest/CCcam
+grep -o -i -E 'C: [a-z][^<]*' /tmp/xtest/CCcam > /tmp/xtest/soubor11
+more /tmp/xtest/soubor11
 ####################################################################################################
 generate_random_letters() {
     tr -dc 'a-z' < /dev/urandom | dd bs=3 count=1 2>/dev/null
@@ -238,27 +177,10 @@ curl --max-time 5.5  -k -A -k -s 'http://www.clinehub.com/freetest/' --compresse
   --data-raw '2freecccamKinhdUMARALI2=2freecccamKinhdUMARALI2&Username='"$username"$'&Password='"$password"$'' \
   > /tmp/xtest/CCcam
   
-grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor21
+grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor12
 
-more /tmp/xtest/soubor21
+more /tmp/xtest/soubor12
 ####################################################################################################
-curl  --limit-rate 50K  -Lbk -m 4555 -m 6555 -k  -s   https://blog.cccambtc.com/geni/ > /tmp/xtest/CCcam
-
-echo "C: "  > hotovo
-sed -ne 's#.*>Host:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
-echo -n " "  >> hotovo
-sed -ne 's#.*Port:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
-echo -n " "  >> hotovo
-sed -ne 's#.*User:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
-echo -n " "  >> hotovo
-sed -ne 's#.*Password:</span>\([^<]*\).*#\1#p' CCcam >> hotovo
-sed -n 'H; $x; $s/\n//gp' hotovo > hotovo1
-echo ""  >> hotovo1
-cat hotovo1 > CCcam
-sed -i 's/  */ /g' CCcam
-grep -o -i -E 'C: [a-z][^<]*' CCcam > /tmp/xtest/soubor23
-
-more /tmp/xtest/soubor23
 ####################################################################################################
 
 ####################################################################################################
@@ -339,7 +261,9 @@ cp /tmp/server /etc/tuxbox/config/supcam-emu/oscam.server  2>/dev/null || true
 sleep 0
 cp /tmp/server /etc/tuxbox/config/oscamicam/oscam.server  2>/dev/null || true
 sleep 0
-cp /tmp/server /etc/tuxbox/config/oscamicamnew/oscam.server  2>/dev/null || true
+cp /tmp/server /etc/tuxbox/config/oscam-stable/oscam.server  2>/dev/null || true
+sleep 0
+cp /tmp/server root/etc/tuxbox/config/oscam-stable/oscam.server  2>/dev/null || true
 sleep 0
 
 wait
