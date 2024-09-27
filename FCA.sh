@@ -182,7 +182,30 @@ grep -o -i -E 'C: [a-z][^<]*' CCcam | sed -n '2p'  > /tmp/xtest/soubor12
 more /tmp/xtest/soubor12
 ####################################################################################################
 ####################################################################################################
+####################################################################################################
+curl  --limit-rate 100K  -k -Lbk -A -k -m 8000 -m 5200 -s  https://cccamsate.com/free > /tmp/xtest/CCcam
 
+grep -o -i -E 'C: [a-z][^<]*' CCcam  > /tmp/xtest/soubor14
+
+more /tmp/xtest/soubor14
+####################################################################################################
+curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52  https://cccamia.com/free-cccam/ > /tmp/xtest/CCcam 
+
+grep -o -i -E 'C: [a-z][^<]*' CCcam  > /tmp/xtest/soubor15
+
+more /tmp/xtest/soubor15
+####################################################################################################
+curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52  https://cccamhub.com/cccamfree/ > /tmp/xtest/CCcam
+
+grep -o -i 'C: free[^<]*' CCcam  > /tmp/xtest/soubor16
+
+more /tmp/xtest/soubor16
+####################################################################################################
+curl --max-time 5.5  --limit-rate 100K     -s -k -Lbk -A -k -m 8 -m 52  https://cccamiptv.club/free-cccam/#page-content > /tmp/xtest/CCcam
+
+grep -o -i 'C: free[^<]*' CCcam > /tmp/xtest/soubor17
+
+more /tmp/xtest/soubor17
 ####################################################################################################
 ####################################################################################################
 ####################################################################################################
@@ -231,14 +254,16 @@ cat /etc/CCcam.cfg | grep -i "^C:.*" | while read line ; do
     echo "device = $SERVER,$PORT" >> $OUTPUT2
     echo "user = $USER" >> $OUTPUT2
     echo "password = $PASS" >> $OUTPUT2
-    echo "group = $group_number" >> $OUTPUT2
     echo "ccckeepalive = 1" >> $OUTPUT2
     echo "inactivitytimeout = 30" >> $OUTPUT2
+    echo "reconnecttimeout = 5" >> $OUTPUT2
+    echo "disablecrccws = 1" >> $OUTPUT2
+    echo "group = 1" >> $OUTPUT2
     echo "" >> $OUTPUT2
     echo "" >> $OUTPUT2
 
 
-    group_number=$((group_number+1))
+    #group_number=$((group_number+1))
 done
 
 cat /etc/OscamDATAx.cfg >> /tmp/server
@@ -261,9 +286,7 @@ cp /tmp/server /etc/tuxbox/config/supcam-emu/oscam.server  2>/dev/null || true
 sleep 0
 cp /tmp/server /etc/tuxbox/config/oscamicam/oscam.server  2>/dev/null || true
 sleep 0
-cp /tmp/server /etc/tuxbox/config/oscam-stable/oscam.server  2>/dev/null || true
-sleep 0
-cp /tmp/server root/etc/tuxbox/config/oscam-stable/oscam.server  2>/dev/null || true
+cp /tmp/server /etc/tuxbox/config/oscamicamnew/oscam.server  2>/dev/null || true
 sleep 0
 
 wait
